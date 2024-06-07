@@ -3,14 +3,13 @@ FROM docker.io/python:3.10
 WORKDIR /app
 
 # Install app dependencies
-COPY gunicorn_app/requirements.txt ./
+COPY . .
 
-COPY ./requirements.txt requirements.txt
+COPY gunicorn_app/requirements.txt ./
 
 RUN pip install  --no-cache-dir --upgrade -r requirements.txt
 
 # Bundle app source
-COPY . .
 
 EXPOSE 8080
 

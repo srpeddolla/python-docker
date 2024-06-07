@@ -1,10 +1,11 @@
 FROM docker.io/python:3.10
 
-# Create app directory
 WORKDIR /app
 
 # Install app dependencies
-COPY requirements.txt ./
+COPY ./myapp.py ./
+
+COPY ./requirements.txt ./
 
 RUN pip install  --no-cache-dir -r requirements.txt
 

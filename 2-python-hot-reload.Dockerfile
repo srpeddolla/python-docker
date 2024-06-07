@@ -14,4 +14,4 @@ ENV GUNICORN_CMD_ARGS="--bind=0.0.0.0:8080 --chdir=./gunicorn_app/"
 COPY . .
 
 EXPOSE 8080
-CMD ["gunicorn", "--config", "./conf/gunicorn_config.py", "gunicorn_app:app"]
+CMD ["gunicorn", "--config", "./conf/gunicorn_config.py", "gunicorn_app.server:app"]

@@ -10,8 +10,9 @@ COPY gunicorn_app/requirements.txt .
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire gunicorn_app directory into the container at /app
-COPY gunicorn_app /app
+# Copy the entire gunicorn_app directory into the container at /app/gunicorn_app
+COPY gunicorn_app /app/gunicorn_app
+RUN ls -R /app
 
 # Set PYTHONPATH to /app to ensure Python can find the module
 ENV PYTHONPATH=/app
@@ -23,4 +24,4 @@ EXPOSE 8080
 RUN pip install watchdog
 
 # Run the application with hot-reload enabled
-CMD ["watchmedo", "auto-restart", "--directory=.", "--pattern=*.py", "--recursive", "--", "python", "gunicorn_app/server.py"]
+CMD ["watchmedo", "auto-restart", "--directory=.", "--pattern=*.py", "--recursive", "--", "python", "/app/gunicorn_app/server.py"]

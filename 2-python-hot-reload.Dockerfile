@@ -20,7 +20,7 @@ ENV PYTHONPATH=/app
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 
-# Install additional tools for hot-reloading
+# Install additional tools for hot-reloading.
 RUN pip install watchdog
 
 # Run the application with hot-reload enabled
